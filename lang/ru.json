@@ -803,6 +803,7 @@
 		"ChatApplySelectedTooltip": "Нажмите, чтобы наложить эффект выбранным токенам.",
 		"ChatApplyEffectNoActorsSelected": "Актеры не выбраны. Невозможно наложить эффект.",
 		"ChatApplyEffectNoActorsTargeted": "Нет цели. Невозможно наложить эффект.",
+		"ChatApplyEffectNoSingleTargetActorFound": "No actor found. Unable to apply effect.",
 		"ChatApplyDamageTooltip": "Нажмите, чтобы нанести урон выбранным токенам.<br>[Ctrl + щелчок] чтобы изменить урон <br>[Shift + щелчок] чтобы игнорировать сопротивления.<br>[Ctrl + Shift + щелчок] чтобы игнорировать сопротивления и иммунитеты.",
 		"ChatApplyDamageNoActorsSelected": "Актеры не выбраны. Невозможно нанести урон.",
 		"ChatApplyDamageVulnerable": "<strong>{actor}</strong> был <strong>уязвим</strong> для <strong>{type}</strong> и получил <strong>{damage}</strong> урона от <strong>{from}</strong>",

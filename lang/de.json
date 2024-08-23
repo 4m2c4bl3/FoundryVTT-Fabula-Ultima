@@ -803,6 +803,7 @@
 		"ChatApplySelectedTooltip": "Klicken um Schaden für ausgewählte Tokens zu verrechnen.",
 		"ChatApplyEffectNoActorsSelected": "Keine Akteure ausgewählt.",
 		"ChatApplyEffectNoActorsTargeted": "Akteure ausgewählt. Nicht anwendbar.",
+		"ChatApplyEffectNoSingleTargetActorFound": "No actor found. Unable to apply effect.",
 		"ChatApplyDamageTooltip": "Klicken um Schaden für ausgewählte Tokens zu verrechnen.<br>[Ctrl + Click] to Open Damage Customizer<br>]Shift + Klick] um Resistenz zu ignorieren.<br>[Strg + Shift + Klick] um Resistenz und Immunität zu ignorieren.",
 		"ChatApplyDamageNoActorsSelected": "Keine Akteure ausgewählt. Schaden kann nicht verrechnet werden.",
 		"ChatApplyDamageVulnerable": "<strong>{actor}</strong> war <strong>schwach</strong> gegen <strong>{type}</strong> und nahm <strong>{damage}</strong> Schaden von <strong>{from}</strong>.",

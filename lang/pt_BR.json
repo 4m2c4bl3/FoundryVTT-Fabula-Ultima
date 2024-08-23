@@ -803,6 +803,7 @@
 		"ChatApplySelectedTooltip": "Clique para aplicar dano aos personagens selecionados.",
 		"ChatApplyEffectNoActorsSelected": "Nenhum personagem selecionado. Não foi possível aplicar o efeito.",
 		"ChatApplyEffectNoActorsTargeted": "Nenhum personagem selecionado. Incapaz de aplicar o efeito.",
+		"ChatApplyEffectNoSingleTargetActorFound": "No actor found. Unable to apply effect.",
 		"ChatApplyDamageTooltip": "Clique para aplicar dano aos personagens selecionados.<br>[Ctrl + Clique] para abrir o Personalizador de Dano<br>[Shift + Clique] para ignorar Resistências.<br>[Ctrl + Shift + Clique] para ignorar Resistências e Imunidades.",
 		"ChatApplyDamageNoActorsSelected": "Nenhum personagem selecionado. Incapaz de aplicar dano.",
 		"ChatApplyDamageVulnerable": "<strong>{actor}</strong> era <strong>vulnerável</strong> a <strong>{type}</strong> e sofreu <strong>{damage}</strong> dano de <strong>{from} </strong>",

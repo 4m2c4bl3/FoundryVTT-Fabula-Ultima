@@ -320,7 +320,7 @@ function getSingleTarget(e) {
 	const { type, id } = parseUuid($(e.target).closest('a').data('id'));
 	const actor = game.actors.get(id);
 	if (!actor) {
-		ui.notifications.warn('FU.ChatApplyEffectNoActorsTargeted', { localize: true });
+		ui.notifications.warn('FU.ChatApplyEffectNoSingleTargetActorFound', { localize: true });
 		return [];
 
 	}
