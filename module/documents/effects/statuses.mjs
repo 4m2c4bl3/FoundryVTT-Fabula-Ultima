@@ -1,7 +1,10 @@
+import { SYSTEM } from '../../helpers/config.mjs';
+import { SETTINGS } from '../../settings';
+
 /**
  * @type {ActiveEffectData[]}
  */
-export const statusEffects = [
+export const statusEffectsBase = [
 	{
 		id: 'accelerated',
 		name: 'FU.Accelerated',
@@ -351,3 +354,32 @@ export const statusEffects = [
 		img: 'systems/projectfu/styles/static/statuses/Crisis.webp',
 	},
 ];
+
+export const statusEffects = statusEffectsBase.map(({ changes, id, ...e }) => ({
+	...e,
+	changes: changes.map(({ key, value, ...c }) => {
+		const effectOverrides = game.settings.get(SYSTEM, SETTINGS.optionDefaultStatusOverrideOptions);
+		return {
+			...c,
+			key,
+			value: effectOverrides[id]?.[key] ?? c.value,
+		};
+	}),
+}));
+
+export class StatusEffectsDataModel extends foundry.abstract.DataModel {
+	static defineSchema() {
+		const { StringField } = foundry.data.fields;
+
+		return Object.fromEntries(
+			statusEffectsBase
+				.map(({ id, changes }) => {
+					if (changes == null) {
+						return undefined;
+					}
+					return [id, Object.fromEntries(changes.map(({ key, value }) => [key, new StringField({ initial: value })]))];
+				})
+				.filter((e) => e != null),
+		);
+	}
+}

@@ -3,6 +3,7 @@ import { MetaCurrencyTrackerApplication } from './ui/metacurrency/MetaCurrencyTr
 import { CombatHUD } from './ui/combat-hud.mjs';
 import { FUHooks } from './hooks.mjs';
 import { WellspringDataModel } from './documents/items/classFeature/invoker/invoker-integration.mjs';
+import { StatusEffectsDataModel } from './documents/effects/statuses.mjs';
 
 export const SETTINGS = Object.freeze({
 	experimentalCombatHud: 'experimentalCombatHud',
@@ -58,6 +59,7 @@ export const SETTINGS = Object.freeze({
 	showAssociatedTherioforms: 'showAssociatedTherioforms',
 	useRevisedStudyRule: 'useRevisedStudyRule',
 	activeWellsprings: 'activeWellsprings',
+	optionDefaultStatusOverrideOptions: 'optionDefaultStatusOverrideOptions',
 	// Automation
 	optionAutomationManageEffects: 'optionAutomationManageEffects',
 	optionAutomationRemoveExpiredEffects: 'optionAutomationRemoveExpiredEffects',
@@ -702,6 +704,16 @@ export const registerSystemSettings = async function () {
 		config: true,
 		type: Boolean,
 		default: false,
+	});
+
+	game.settings.register(SYSTEM, SETTINGS.optionDefaultStatusOverrideOptions, {
+		name: game.i18n.localize('FU.ConfigDefaultStatusOverride'),
+		hint: game.i18n.localize('FU.ConfigDefaultStatusOverrideHint'),
+		scope: 'world',
+		config: true,
+		type: StatusEffectsDataModel,
+		default: false,
+		requiresReload: true,
 	});
 };
 
