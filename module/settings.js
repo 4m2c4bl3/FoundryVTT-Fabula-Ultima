@@ -706,6 +706,15 @@ export const registerSystemSettings = async function () {
 		default: false,
 	});
 
+	game.settings.registerMenu(SYSTEM, 'metaCurrencySettings', {
+		name: game.i18n.localize('FU.ConfigMetaCurrencySettings'),
+		hint: game.i18n.localize('FU.ConfigMetaCurrencySettingsHint'),
+		label: game.i18n.localize('FU.ConfigMetaCurrencySettingsLabel'),
+		icon: 'fas fa-chart-line',
+		type: StatusEffectOverrideOptions,
+		restricted: true,
+	});
+
 	game.settings.register(SYSTEM, SETTINGS.optionDefaultStatusOverrideOptions, {
 		name: game.i18n.localize('FU.ConfigDefaultStatusOverride'),
 		hint: game.i18n.localize('FU.ConfigDefaultStatusOverrideHint'),
@@ -716,6 +725,36 @@ export const registerSystemSettings = async function () {
 		requiresReload: true,
 	});
 };
+
+class StatusEffectOverrideOptions extends FormApplication {
+	static get defaultOptions() {
+		return foundry.utils.mergeObject(super.defaultOptions, {
+			title: game.i18n.localize('FU.ConfigMetaCurrencySettings'),
+			width: 700,
+		});
+	}
+
+	get template() {
+		return 'systems/projectfu/templates/system/settings/override-effects.hbs';
+	}
+
+	getData(options = {}) {
+		return {
+			baseExperience: game.settings.get(SYSTEM, SETTINGS.metaCurrencyBaseExperience),
+			keepExcessFabula: game.settings.get(SYSTEM, SETTINGS.metaCurrencyKeepExcessFabula),
+			automation: game.settings.get(SYSTEM, SETTINGS.metaCurrencyAutomation),
+			automaticallyDistributeExp: game.settings.get(SYSTEM, SETTINGS.metaCurrencyAutomaticallyDistributeExp),
+		};
+	}
+
+	async _updateObject(event, formData) {
+		const { baseExperience, keepExcessFabula, automation, automaticallyDistributeExp } = foundry.utils.expandObject(formData);
+		game.settings.set(SYSTEM, SETTINGS.metaCurrencyBaseExperience, baseExperience);
+		game.settings.set(SYSTEM, SETTINGS.metaCurrencyKeepExcessFabula, keepExcessFabula);
+		game.settings.set(SYSTEM, SETTINGS.metaCurrencyAutomation, automation);
+		game.settings.set(SYSTEM, SETTINGS.metaCurrencyAutomaticallyDistributeExp, automaticallyDistributeExp);
+	}
+}
 
 class OptionalRules extends FormApplication {
 	static get defaultOptions() {

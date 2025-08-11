@@ -1,5 +1,5 @@
 import { SYSTEM } from '../../helpers/config.mjs';
-import { SETTINGS } from '../../settings';
+import { SETTINGS } from '../../settings.js';
 
 /**
  * @type {ActiveEffectData[]}
@@ -357,12 +357,12 @@ export const statusEffectsBase = [
 
 export const statusEffects = statusEffectsBase.map(({ changes, id, ...e }) => ({
 	...e,
-	changes: changes.map(({ key, value, ...c }) => {
-		const effectOverrides = game.settings.get(SYSTEM, SETTINGS.optionDefaultStatusOverrideOptions);
+	changes: changes?.map(({ key, value, ...c }) => {
+		const effectOverrides = game.settings?.get(SYSTEM, SETTINGS.optionDefaultStatusOverrideOptions);
 		return {
 			...c,
 			key,
-			value: effectOverrides[id]?.[key] ?? c.value,
+			value: effectOverrides?.[id]?.[key] ?? c.value,
 		};
 	}),
 }));
@@ -377,7 +377,7 @@ export class StatusEffectsDataModel extends foundry.abstract.DataModel {
 					if (changes == null) {
 						return undefined;
 					}
-					return [id, Object.fromEntries(changes.map(({ key, value }) => [key, new StringField({ initial: value })]))];
+					return [id, Object.fromEntries(changes?.map(({ key, value }) => [key, new StringField({ initial: value })]))];
 				})
 				.filter((e) => e != null),
 		);
